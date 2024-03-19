@@ -1,10 +1,10 @@
 {
   "name": "@chrismwilliams/apophenia",
-  "description": "Astro monorepo blog template testbed",
+  "description": "Astro monorepo testbed",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm --filter baseline dev"
+    "dev:cls": "pnpm --filter astro-cls dev"
   }
 }
