@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../Layout/BaseLayout.astro";
+import image from "../assets/maxim-berg-unsplash.jpg";
+---
+
+<Layout title="Default Example - Astro Image LCP">
+	<h1>Default Example - Astro Image LCP.</h1>
+	<Image src={image} alt="A colorful abstract background with wavy lines by Maxim Berg" />
+	<dl>
+		<dt>Format</dt>
+		<dd>WebP</dd>
+		<dt>Size</dt>
+		<dd>1.3 MB</dd>
+		<dd>4000 x 2666</dd>
+		<dt>Decoding</dt>
+		<dd>async</dd>
+		<dt>Loading</dt>
+		<dd>Lazy</dd>
+	</dl>
+</Layout>
