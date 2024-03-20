@@ -1,15 +1,16 @@
 ---
 type Props = {
-  title: string;
-}
+	title: string;
+};
 
 const { title } = Astro.props;
 ---
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>{title}</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>{title}</title>
+	<slot name="after-title" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
 </head>
