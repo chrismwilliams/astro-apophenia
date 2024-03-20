@@ -1,5 +1,5 @@
 {
-  "name": "@chrismwilliams/astro-cls",
+  "name": "@chrismwilliams/astro-lcp",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -13,6 +13,7 @@
     "astro": "^4.5.6",
     "@astrojs/check": "^0.5.9",
     "@chrismwilliams/components": "workspace:^",
+    "@chrismwilliams/css": "workspace:^",
     "typescript": "^5.4.2"
   }
 }

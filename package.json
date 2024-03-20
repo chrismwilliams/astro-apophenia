@@ -5,6 +5,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev:cls": "pnpm --filter astro-cls dev"
+    "dev:lcp": "pnpm --filter astro-lcp dev"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }
