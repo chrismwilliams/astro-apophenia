@@ -4,14 +4,19 @@ import ImageLayout from "$layouts/ImageLayout.astro";
 import image from "$assets/maxim-berg-unsplash.jpg";
 ---
 
-<ImageLayout title="Default Example - Astro Image LCP">
-	<h1>Default Example.</h1>
-	<Image src={image} alt="A colorful abstract background with wavy lines by Maxim Berg" />
+<ImageLayout title="Default Decoding Example - Astro Image LCP">
+	<h1>Default Decoding Example.</h1>
+	<Image
+		src={image}
+		alt="A colorful abstract background with wavy lines by Maxim Berg"
+		loading={false}
+	/>
+	<p></p>
 	<dl>
 		<dt>Decoding</dt>
 		<dd>async</dd>
-		<dt>Loading</dt>
-		<dd>lazy</dd>
+		<dt><s>Loading</s></dt>
+		<dd><strong>false</strong></dd>
 		<dt>Image</dt>
 		<dd>WebP &mdash; 1.3 MB &mdash; 4000px x 2666px</dd>
 	</dl>
