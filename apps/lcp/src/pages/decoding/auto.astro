@@ -1,24 +1,9 @@
 ---
-import { Image } from "astro:assets";
 import ImageLayout from "$layouts/ImageLayout.astro";
-import image from "$assets/maxim-berg-unsplash.jpg";
+import ImageTest from "$components/ImageTest.astro";
 ---
 
 <ImageLayout title="Auto Decoding Example - Astro Image LCP">
 	<h1>Auto Decoding Example.</h1>
-	<Image
-		src={image}
-		alt="A colorful abstract background with wavy lines by Maxim Berg"
-		decoding="auto"
-		loading={false}
-	/>
-	<dl>
-		<dt>Decoding</dt>
-		<dd><strong>auto</strong></dd>
-		<dt><s>Loading</s></dt>
-		<dd><strong>false</strong></dd>
-		<dt>Image</dt>
-		<dd>WebP &mdash; 1.3 MB &mdash; 4000px x 2666px</dd>
-	</dl>
-	<p>Note: <strong>Bold</strong> repesents attribute values different from default.</p>
+	<ImageTest decoding="auto" loading={false} />
 </ImageLayout>

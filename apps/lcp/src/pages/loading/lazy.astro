@@ -1,24 +1,9 @@
 ---
-import { Image } from "astro:assets";
 import ImageLayout from "$layouts/ImageLayout.astro";
-import image from "$assets/maxim-berg-unsplash.jpg";
+import ImageTest from "$components/ImageTest.astro";
 ---
 
 <ImageLayout title="Lazy Loading Example - Astro Image LCP">
 	<h1>Lazy Loading Example.</h1>
-	<Image
-		src={image}
-		alt="A colorful abstract background with wavy lines by Maxim Berg"
-		decoding={false}
-		loading="lazy"
-	/>
-	<dl>
-		<dt><s>Decoding</s></dt>
-		<dd><strong>false</strong></dd>
-		<dt>Loading</dt>
-		<dd>lazy</dd>
-		<dt>Image</dt>
-		<dd>WebP &mdash; 1.3 MB &mdash; 4000px x 2666px</dd>
-	</dl>
-	<p>Note: <strong>Bold</strong> repesents attribute values different from default.</p>
+	<ImageTest decoding={false} loading="lazy" />
 </ImageLayout>

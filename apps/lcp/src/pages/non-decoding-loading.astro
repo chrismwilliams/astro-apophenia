@@ -1,0 +1,9 @@
+---
+import ImageLayout from "$layouts/ImageLayout.astro";
+import ImageTest from "$components/ImageTest.astro";
+---
+
+<ImageLayout title="Non Decoding & Loading Example - Astro Image LCP">
+	<h1>Non Decoding & Loading Example.</h1>
+	<ImageTest decoding={false} loading={false} />
+</ImageLayout>
