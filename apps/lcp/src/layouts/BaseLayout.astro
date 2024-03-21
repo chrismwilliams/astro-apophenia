@@ -1,9 +1,10 @@
 ---
-import styles from "@chrismwilliams/css/global.css?raw";
+import styles from "../css/global.css?raw";
 import BaseHead from "@chrismwilliams/components/BaseHead.astro";
-import Nav from "../components/Nav.astro";
+import Nav from "$components/Nav.astro";
+import Footer from "$components/Footer.astro";
 
-type Props = {
+export type Props = {
 	title?: string;
 };
 
@@ -13,11 +14,13 @@ const { title = "Astro Image LCP" } = Astro.props;
 <html lang="en">
 	<BaseHead title={title}>
 		<Fragment slot="after-title">
+			<slot name="before-styles" />
 			<style is:inline set:html={styles}></style>
 		</Fragment>
 	</BaseHead>
 	<body>
 		<Nav />
 		<slot />
+		<Footer />
 	</body>
 </html>

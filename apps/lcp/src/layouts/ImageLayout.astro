@@ -1,0 +1,17 @@
+---
+import BaseLayout, { type Props as BaseLayoutProps } from "./BaseLayout.astro";
+
+type Props = BaseLayoutProps;
+
+const { title = "Astro Image LCP" } = Astro.props;
+---
+
+<BaseLayout title={title}>
+	<script is:inline slot="before-styles">
+		(async () => {
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+			console.log("Delayed in head.");
+		})();
+	</script>
+	<slot />
+</BaseLayout>
