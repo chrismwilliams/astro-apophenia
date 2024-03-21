@@ -4,7 +4,11 @@ import Layout from "$layouts/BaseLayout.astro";
 
 <Layout title="Astro Image LCP">
 	<h1>Astro Image LCP Tests.</h1>
-	<p>A non-exhaustive list of LCP tests, utlising the Astro Image component.</p>
+	<p>
+		A non-exhaustive list of Largest Contentful Paint (LCP) tests utilising the Astro Image
+		component, evaluating the impact of the attributes <code>decoding</code> and <code>loading</code
+		> on image loading performance.
+	</p>
 	<p>
 		Each page represents a different example, and includes a synchronous script to emphasise results
 		(delay of 1000ms).
@@ -25,21 +29,27 @@ import Layout from "$layouts/BaseLayout.astro";
 			<li>
 				<h3>Decoding</h3>
 				<ul>
-					<li><a href="/decoding/">Default Decoding</a></li>
-					<li><a href="/decoding/sync/">With Sync Decoding</a></li>
+					<li><a href="/decoding/async/">Async Decoding</a></li>
+					<li><a href="/decoding/auto/">Auto Decoding</a></li>
+					<li><a href="/decoding/sync/">Sync Decoding</a></li>
 				</ul>
 			</li>
 			<li>
 				<h3>Loading</h3>
 				<ul>
-					<li><a href="/loading/">Default Loading</a></li>
 					<li><a href="/loading/eager/">Eager Loading</a></li>
+					<li><a href="/loading/lazy/">Lazy Loading</a></li>
 				</ul>
 			</li>
 			<li>
 				<h3>Decoding & Loading</h3>
 				<ul>
-					<!-- Add items related to "Decoding & Loading" here -->
+					<li><a href="/decoding-loading/async-eager/">Async Decoding & Eager Loading</a></li>
+					<li><a href="/decoding-loading/async-lazy/">Async Decoding & Lazy Loading</a></li>
+					<li><a href="/decoding-loading/auto-eager/">Auto Decoding & Eager Loading</a></li>
+					<li><a href="/decoding-loading/auto-lazy/">Auto Decoding & Lazy Loading</a></li>
+					<li><a href="/decoding-loading/sync-eager/">Sync Decoding & Eager Loading</a></li>
+					<li><a href="/decoding-loading/sync-lazy/">Sync Decoding & Lazy Loading</a></li>
 				</ul>
 			</li>
 		</ul>
