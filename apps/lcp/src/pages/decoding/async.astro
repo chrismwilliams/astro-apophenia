@@ -4,14 +4,14 @@ import ImageLayout from "$layouts/ImageLayout.astro";
 import image from "$assets/maxim-berg-unsplash.jpg";
 ---
 
-<ImageLayout title="Default Decoding Example - Astro Image LCP">
-	<h1>Default Decoding Example.</h1>
+<ImageLayout title="Aysnc Decoding Example - Astro Image LCP">
+	<h1>Async Decoding Example.</h1>
 	<Image
 		src={image}
 		alt="A colorful abstract background with wavy lines by Maxim Berg"
+		decoding="async"
 		loading={false}
 	/>
-	<p></p>
 	<dl>
 		<dt>Decoding</dt>
 		<dd>async</dd>
