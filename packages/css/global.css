@@ -32,16 +32,12 @@ dd {
 ul[role="list"],
 ol[role="list"] {
 	list-style: none;
-	padding-inline: 0;
 }
 
 /* Set core body defaults */
 body {
 	min-height: 100vh;
 	line-height: 1.5;
-	max-width: 70ch;
-	margin-inline: auto;
-	padding: 1em;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -73,9 +69,7 @@ a:not([class]) {
 img,
 picture {
 	max-width: 100%;
-	height: auto;
 	display: block;
-	margin-block-start: 1em;
 }
 
 /* Inherit fonts for inputs and buttons */
