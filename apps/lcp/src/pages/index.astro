@@ -2,18 +2,24 @@
 import Layout from "$layouts/BaseLayout.astro";
 ---
 
-<Layout title="Astro Image LCP">
-	<h1>Astro Image LCP Tests.</h1>
+<Layout title="Image LCP">
+	<h1>Image LCP Tests.</h1>
 	<p>
-		A non-exhaustive list of Largest Contentful Paint (LCP) tests utilising the Astro Image
-		component, evaluating the impact of the attributes <code>decoding</code> and <code>loading</code
-		> on image loading performance.
+		A non-exhaustive list of Largest Contentful Paint (LCP) tests, evaluating the impact of the
+		attributes <code>decoding</code> and <code>loading</code> on image loading performance.
 	</p>
 	<p>
 		Each page represents a different example, and includes a synchronous script to emphasise results
 		(delay of 1000ms).
 	</p>
-	<p>Image used for tests (default): 4000px x 2666px, 2.03 MB</p>
+	<p>Image used for tests (default): 4000px x 2666px, 2.03MB JPG.</p>
+	<p>
+		Tests use Astro's <a
+			href="https://docs.astro.build/en/guides/images/#generating-images-with-getimage"
+			target="_blank"
+			rel="noopener noreferrer"><code>getImage</code></a
+		> to generate: 860px x 573px, 246kB WebP.
+	</p>
 	<p>
 		Image source: <a
 			href="https://unsplash.com/photos/a-colorful-abstract-background-with-wavy-lines-Ac02zYZs22Y"
@@ -24,10 +30,7 @@ import Layout from "$layouts/BaseLayout.astro";
 		<h2>Examples</h2>
 		<ul>
 			<li>
-				<a href="/default/">Astro Image Default</a>
-			</li>
-			<li>
-				<a href="/non-decoding-loading/">Non Decoding & Loading</a>
+				<a href="/default/">Image Default (Baseline)</a>
 			</li>
 			<li>
 				<h3>Decoding</h3>

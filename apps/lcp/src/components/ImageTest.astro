@@ -1,30 +1,36 @@
 ---
-import { Image } from "astro:assets";
-import image from "$assets/maxim-berg-unsplash.jpg";
+import { getImage } from "astro:assets";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+import type { Optional } from "@chrismwilliams/utils/types";
 
 type Props = {
-	decoding: "async" | "auto" | "sync" | false;
-	loading: "eager" | "lazy" | false;
+	decoding?: "async" | "auto" | "sync" | undefined;
+	loading?: "eager" | "lazy" | undefined;
+	getImageOptions?: Optional<Parameters<typeof getImage>[0], "src"> | undefined;
 };
 
-const { decoding, loading } = Astro.props;
+const { decoding, loading, getImageOptions = {} } = Astro.props;
 
-const decodingDefault = "async";
-const loadingDefault = "lazy";
+const optimisedImage = await getImage({
+	src: testImage,
+	width: 860,
+	quality: 90,
+	...getImageOptions,
+});
 ---
 
-<Image
-	src={image}
+<img
+	src={optimisedImage.src}
+	width={optimisedImage.attributes.width}
+	height={optimisedImage.attributes.height}
 	alt="A colorful abstract background with wavy lines by Maxim Berg"
 	decoding={decoding}
 	loading={loading}
 />
 <dl>
 	<dt>Decoding</dt>
-	<dd>{decoding === decodingDefault ? decoding : <strong>{`${decoding}`}</strong>}</dd>
+	<dd>{typeof decoding === "undefined" ? "NA" : <strong>{decoding}</strong>}</dd>
 	<dt>Loading</dt>
-	<dd>{loading === loadingDefault ? loading : <strong>{`${loading}`}</strong>}</dd>
-	<dt>Image</dt>
-	<dd>WebP &mdash; 1.3 MB &mdash; 4000px x 2666px</dd>
+	<dd>{typeof loading === "undefined" ? "NA" : <strong>{loading}</strong>}</dd>
 </dl>
 <p>Note: <strong>Bold</strong> repesents attribute values different from default.</p>
