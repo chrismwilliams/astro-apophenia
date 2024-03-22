@@ -5,7 +5,7 @@ body {
 	line-height: 1.6;
 	font-size: 18px;
 	color: #444;
-	padding: 0 10px;
+	padding-inline: 10px;
 }
 
 h1,
@@ -19,4 +19,8 @@ picture {
 	max-width: 100%;
 	height: auto;
 	display: block;
+}
+
+code {
+	font-size: 1rem;
 }
