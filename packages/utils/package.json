@@ -1,0 +1,7 @@
+{
+	"name": "@chrismwilliams/utils",
+	"version": "0.0.1",
+	"devDependencies": {
+		"typescript": "^5.4.2"
+	}
+}
