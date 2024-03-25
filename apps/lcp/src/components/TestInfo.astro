@@ -1,0 +1,15 @@
+---
+import type { TestImageAttributes } from "$types";
+
+type Props = TestImageAttributes;
+const { decoding, loading } = Astro.props;
+---
+
+<dl>
+	<dt>Decoding</dt>
+	<dd>{typeof decoding === "undefined" ? "n/a" : <strong>{decoding}</strong>}</dd>
+	<dt>Loading</dt>
+	<dd>{typeof loading === "undefined" ? "n/a" : <strong>{loading}</strong>}</dd>
+	<slot name="dl-content" />
+</dl>
+<p>Note: <strong>Bold</strong> repesents attribute values different from default.</p>

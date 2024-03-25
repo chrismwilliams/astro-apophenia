@@ -1,15 +1,16 @@
 ---
 import { getImage } from "astro:assets";
-import testImage from "$assets/maxim-berg-unsplash.jpg";
 import type { Optional } from "@chrismwilliams/utils/types";
+import type { TestImageAttributes } from "$types";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+import TestInfo from "./TestInfo.astro";
 
-type Props = {
-	decoding?: "async" | "auto" | "sync" | undefined;
-	loading?: "eager" | "lazy" | undefined;
+type Props = TestImageAttributes & {
 	getImageOptions?: Optional<Parameters<typeof getImage>[0], "src"> | undefined;
+	style?: string | undefined;
 };
 
-const { decoding, loading, getImageOptions = {} } = Astro.props;
+const { decoding, loading, getImageOptions = {}, style } = Astro.props;
 
 const optimisedImage = await getImage({
 	src: testImage,
@@ -26,11 +27,6 @@ const optimisedImage = await getImage({
 	alt="A colorful abstract background with wavy lines by Maxim Berg"
 	decoding={decoding}
 	loading={loading}
+	style={style}
 />
-<dl>
-	<dt>Decoding</dt>
-	<dd>{typeof decoding === "undefined" ? "NA" : <strong>{decoding}</strong>}</dd>
-	<dt>Loading</dt>
-	<dd>{typeof loading === "undefined" ? "NA" : <strong>{loading}</strong>}</dd>
-</dl>
-<p>Note: <strong>Bold</strong> repesents attribute values different from default.</p>
+<TestInfo decoding={decoding} loading={loading} />
