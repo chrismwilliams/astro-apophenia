@@ -16,6 +16,7 @@ const { title = "Astro Image LCP" } = Astro.props;
 		<Fragment slot="after-title">
 			<slot name="before-styles" />
 			<style is:inline set:html={styles}></style>
+			<slot name="after-styles" />
 		</Fragment>
 	</BaseHead>
 	<body>
