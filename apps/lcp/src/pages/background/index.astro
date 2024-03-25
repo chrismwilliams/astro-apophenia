@@ -1,0 +1,30 @@
+---
+import { getImage } from "astro:assets";
+import ImageLayout from "$layouts/ImageLayout.astro";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+import TestInfo from "$components/TestInfo.astro";
+
+const optimisedImage = await getImage({
+	src: testImage,
+	width: 860,
+	quality: 90,
+});
+
+const paddingTop = (optimisedImage.attributes.height / optimisedImage.attributes.width) * 100;
+---
+
+<ImageLayout title="Background Image Example - Image LCP">
+	<h1>Background Image Example.</h1>
+	<div
+		style=`height: 0;padding-top: ${paddingTop}%;background-size: cover;background-repeat: no-repeat;background-image: url(${optimisedImage.src});`
+	>
+	</div>
+	<TestInfo
+		><Fragment slot="dl-content">
+			<dt>Style</dt>
+			<dd>
+				<strong>background-image</strong>
+			</dd>
+		</Fragment></TestInfo
+	>
+</ImageLayout>

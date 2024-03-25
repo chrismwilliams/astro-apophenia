@@ -1,0 +1,40 @@
+---
+import { getImage } from "astro:assets";
+import ImageLayout from "$layouts/ImageLayout.astro";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+import TestInfo from "$components/TestInfo.astro";
+
+const optimisedImage = await getImage({
+	src: testImage,
+	width: 860,
+	quality: 90,
+});
+
+// generate a low quality image placeholder with the same dimensions
+// ensure the image is at least 0.05 bits of data per pixel (BPP) as Chrome ignores low-entropy images.
+// test default is (860 x 573 * 0.05) / 8000 = 3.08kB
+const lqip = await getImage({
+	src: testImage,
+	width: 860,
+	format: testImage.format,
+	quality: 10,
+});
+
+const paddingTop = (optimisedImage.attributes.height / optimisedImage.attributes.width) * 100;
+---
+
+<ImageLayout title="Background Image With Low Quality Image Placeholder Example - Image LCP">
+	<h1>Background Image With Low Quality Image Placeholder Example.</h1>
+	<div
+		style=`height: 0;padding-top: ${paddingTop}%;background-size: cover;background-repeat: no-repeat;background-image: url(${optimisedImage.src}), url(${lqip.src});`
+	>
+	</div>
+	<TestInfo
+		><Fragment slot="dl-content">
+			<dt>Style</dt>
+			<dd>
+				<strong>background-image with a low quality image placeholder</strong>
+			</dd>
+		</Fragment></TestInfo
+	>
+</ImageLayout>
