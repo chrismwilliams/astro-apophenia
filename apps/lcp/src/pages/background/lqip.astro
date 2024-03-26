@@ -23,8 +23,8 @@ const lqip = await getImage({
 const paddingTop = (optimisedImage.attributes.height / optimisedImage.attributes.width) * 100;
 ---
 
-<ImageLayout title="Background Image With Low Quality Image Placeholder Example - Image LCP">
-	<h1>Background Image With Low Quality Image Placeholder Example.</h1>
+<ImageLayout title="Background Image With Low Quality Image Placeholder - Image LCP">
+	<h1>Background Image With A LQIP.</h1>
 	<div
 		style=`height: 0;padding-top: ${paddingTop}%;background-size: cover;background-repeat: no-repeat;background-image: url(${optimisedImage.src}), url(${lqip.src});`
 	>
