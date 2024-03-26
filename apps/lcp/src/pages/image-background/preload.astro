@@ -15,15 +15,20 @@ const lqip = await getImage({
 });
 ---
 
-<ImageLayout title="Image With Low Quality Image Placeholder Example - Image LCP">
-	<h1>Image With Low Quality Image Placeholder Example.</h1>
+<ImageLayout title="Image With A Low Quality Image Placeholder Background & Preload - Image LCP">
+	<link rel="preload" as="image" href={lqip.src} slot="after-styles" />
+	<h1>Image With A LQIP Background & Preload.</h1>
 	<ImageTest
 		style=`background-size: cover;background-repeat: no-repeat;background-image: url(${lqip.src});`
 	>
 		<Fragment slot="dl-content">
 			<dt>Style</dt>
 			<dd>
-				<strong>background-image</strong>
+				<strong>low quality background-image</strong>
+			</dd>
+			<dt>Preload</dt>
+			<dd>
+				<strong>preload low quality background image in <code>head</code></strong>
 			</dd>
 		</Fragment>
 	</ImageTest>
