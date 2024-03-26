@@ -29,4 +29,6 @@ const optimisedImage = await getImage({
 	loading={loading}
 	style={style}
 />
-<TestInfo decoding={decoding} loading={loading} />
+<TestInfo decoding={decoding} loading={loading}>
+	<slot name="dl-content" slot="dl-content" />
+</TestInfo>
