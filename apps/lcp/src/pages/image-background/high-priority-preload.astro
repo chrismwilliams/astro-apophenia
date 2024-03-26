@@ -1,0 +1,35 @@
+---
+import { getImage } from "astro:assets";
+import ImageLayout from "$layouts/ImageLayout.astro";
+import ImageTest from "$components/ImageTest.astro";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+
+// generate a low quality image placeholder with the same dimensions
+// ensure the image is at least 0.05 bits of data per pixel (BPP) as Chrome ignores low-entropy images.
+// test default is (860 x 573 * 0.05) / 8000 = 3.08kB
+const lqip = await getImage({
+	src: testImage,
+	width: 860,
+	format: testImage.format,
+	quality: 10,
+});
+---
+
+<ImageLayout title="Image With LQIP & High Priority Preload - Image LCP">
+	<link rel="preload" as="image" href={lqip.src} slot="after-styles" fetchpriority="high" />
+	<h1>Image With LQIP & High Priority Preload.</h1>
+	<ImageTest
+		style=`background-size: cover;background-repeat: no-repeat;background-image: url(${lqip.src});`
+	>
+		<Fragment slot="dl-content">
+			<dt>Style</dt>
+			<dd>
+				<strong>background-image</strong>
+			</dd>
+			<dt>Preload</dt>
+			<dd>
+				<strong>high priority preload background image in <code>head</code></strong>
+			</dd>
+		</Fragment>
+	</ImageTest>
+</ImageLayout>
