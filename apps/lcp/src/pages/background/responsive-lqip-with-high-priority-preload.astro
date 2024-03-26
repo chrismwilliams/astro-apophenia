@@ -1,0 +1,119 @@
+---
+import { getImage } from "astro:assets";
+import ImageLayout from "$layouts/ImageLayout.astro";
+import testImage from "$assets/maxim-berg-unsplash.jpg";
+import TestInfo from "$components/TestInfo.astro";
+
+// generate responsive images with low quality image placeholders
+const largeOptimisedImage = await getImage({
+	src: testImage,
+	width: 1200,
+	quality: 90,
+});
+
+// ensure the image is at least 0.05 bits of data per pixel (BPP) as Chrome ignores low-entropy images.
+// (1200 x 795 * 0.05) / 8000 = 5.96kB
+const largeLqip = await getImage({
+	src: testImage,
+	width: 1200,
+	format: testImage.format,
+	quality: 10,
+});
+
+const mediumOptimisedImage = await getImage({
+	src: testImage,
+	width: 860,
+	quality: 90,
+});
+
+// (860 x 573 * 0.05) / 8000 = 3.08kB
+const mediumLqip = await getImage({
+	src: testImage,
+	width: 860,
+	format: testImage.format,
+	quality: 10,
+});
+
+const smallOptimisedImage = await getImage({
+	src: testImage,
+	width: 400,
+	quality: 90,
+});
+
+// (400 x 265 * 0.05) / 8000 = 0.66kB
+const smallLqip = await getImage({
+	src: testImage,
+	width: 400,
+	format: testImage.format,
+	quality: 10,
+});
+
+const paddingTop =
+	(mediumOptimisedImage.attributes.height / mediumOptimisedImage.attributes.width) * 100;
+
+const bgImageContainerStyles = `
+.bg-image-container {
+  background-image: url(${smallOptimisedImage.src}), url(${smallLqip.src});
+}
+
+@media screen and (min-width: 720px) {
+  .bg-image-container {
+    background-image: url(${mediumOptimisedImage.src}), url(${mediumLqip.src});
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bg-image-container {
+    background-image: url(${largeOptimisedImage.src}), url(${largeLqip.src});
+  }
+}`;
+---
+
+<ImageLayout
+	title="Responsive Background Images With Responsive LQIP & High Priority Preload - Image LCP"
+>
+	<Fragment slot="after-styles">
+		<style set:html={bgImageContainerStyles}></style>
+		<link
+			rel="preload"
+			as="image"
+			href={smallLqip.src}
+			media="(max-width: 719px)"
+			fetchpriority="high"
+		/>
+		<link
+			rel="preload"
+			as="image"
+			href={mediumLqip.src}
+			media="(min-width: 720px) and (max-width: 1023px)"
+			fetchpriority="high"
+		/>
+		<link
+			rel="preload"
+			as="image"
+			href={largeLqip.src}
+			media="(min-width: 1024px)"
+			fetchpriority="high"
+		/>
+	</Fragment>
+	<h1>Responsive Background Images With Responsive LQIP & High Priority Preload.</h1>
+	<div
+		class="bg-image-container"
+		style=`height: 0;padding-top: ${paddingTop}%;background-size: cover;background-repeat: no-repeat;`
+	>
+	</div>
+	<TestInfo
+		><Fragment slot="dl-content">
+			<dt>Style</dt>
+			<dd>
+				<strong>responsive background-images with responsive low quality image placeholders</strong>
+			</dd>
+			<dt>Preload</dt>
+			<dd>
+				<strong
+					>preload background LQIPs in <code>head</code> with media queries & high priority</strong
+				>
+			</dd>
+		</Fragment></TestInfo
+	>
+</ImageLayout>
