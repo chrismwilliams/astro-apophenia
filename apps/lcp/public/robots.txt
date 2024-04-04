@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /*?v
+Disallow: /calendar/action*
+Disallow: /events/action*
+Disallow: /*?
+Crawl-delay: 3
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-Agent: FacebookBot
+Disallow: /
