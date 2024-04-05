@@ -7,12 +7,7 @@ const { title = "Astro Image LCP" } = Astro.props;
 ---
 
 <BaseLayout title={title}>
-	<script is:inline slot="before-styles">
-		(async () => {
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-			console.log("Delayed in head.");
-		})();
-	</script>
+	<script src="https://slowfil.es/file?type=js&delay=1000" slot="before-styles"></script>
 	<slot name="after-styles" slot="after-styles" />
 	<slot />
 </BaseLayout>
