@@ -7,7 +7,7 @@ const { title = "Astro Image LCP" } = Astro.props;
 ---
 
 <BaseLayout title={title}>
-	<script src="https://slowfil.es/file?type=js&delay=1000" slot="before-styles"></script>
+	<script is:inline src="https://slowfil.es/file?type=js&delay=1000" slot="before-styles"></script>
 	<slot name="after-styles" slot="after-styles" />
 	<slot />
 </BaseLayout>
