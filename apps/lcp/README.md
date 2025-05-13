@@ -2,4 +2,4 @@
 
 ## Testing Astro Image LCP methods
 
-[astro-image-lcp.pages.dev](https://lcp.pages.dev/)
+[lcp.pages.dev](https://lcp.pages.dev/)
